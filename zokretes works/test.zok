@@ -52,11 +52,13 @@ def run<n,m,o>(field[n] VAR, u64[o] INS, u32 LEN, u32[m] stack) -> field[n]{
 
 //main function
 
-def main(field[3] VAR, u64[2] INS) -> field[3]{
+def main(field[5] VAR, u64[4] INS) -> field[5]{
 
-    u32 LEN = 2;
-    u32[2] stack = [2,2];
-	
-    return run(VAR, INS, LEN, stack);
+    u32 LEN = 4;
+    u32[4] stack = [2,2,2,2];
+
+    field[5] RESULT = run(VAR, INS, LEN, stack);
+
+    return RESULT;
 
 }
