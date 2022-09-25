@@ -59,6 +59,8 @@ def main(field[5] VAR, u64[4] INS) -> field[5]{
 
     field[5] RESULT = run(VAR, INS, LEN, stack);
 
+    assert(RESULT[0] == 0);
+
     return RESULT;
 
 }
