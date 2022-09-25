@@ -1,0 +1,62 @@
+def setres<n>(field[n] mut var, field[n] mut res, field resval, u32 start) -> field[n]{
+
+    var = res;
+    res[0] = resval;
+    u32 mut i=1;
+
+    for u32 mut j in start..n {
+        res[i] =  var[j];
+        i=i+1;
+    }
+
+    return res;
+}
+
+def operator<n>(field[n] var, field[n] mut res, u64 INS, u32 start) -> field[n]{
+
+    field mut resval = 0;
+
+    resval = if (INS == 0x0000000000000001 && res[0]==res[1]) { //EQUAL
+        0 
+    } else {
+        
+        if (INS == 0x0000000000000002) { //ADD
+
+            res[0] + res[1]
+            
+
+
+        } else {
+            -1
+        }
+    };
+
+    res = setres(var, res, resval, start);
+
+    return res;
+}
+
+def run<n,m,o>(field[n] VAR, u64[o] INS, u32 LEN, u32[m] stack) -> field[n]{
+    
+    
+    field[n] mut RES=VAR;
+
+    for u32 i in 0..LEN{
+        RES = operator(VAR, RES, INS[i], stack[i]);
+    }
+
+    return RES;
+}
+
+
+
+//main function
+
+def main(field[3] VAR, u64[2] INS) -> field[3]{
+
+    u32 LEN = 2;
+    u32[2] stack = [2,2];
+	
+    return run(VAR, INS, LEN, stack);
+
+}
