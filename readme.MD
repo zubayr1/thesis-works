@@ -1,17 +1,17 @@
-#### Problem statement (specific):
+## Problem statement (specific):
 
 Given 3 values s1, s2, s3 and 2 instructions i1 (add) and i2(equal)
     check if [s1 i1 s2 i2 s3] (in other words, s1 + s2 == s3)
 
 
 
-#### Problem statement (generic): (also possible with the given code)
+## Problem statement (generic): (also possible with the given code)
 
 Given N values s1, s2, s3, ... , sN and (N-1) instructions i1-iN-1 (add) and iN(equal)
     check if [s1 i1 s2 i2 s3 ... iN-1 sN] (in other words, s1 + s2 + ... + sN-1 == sN)
 
 
-main():
+#### main():
 created by user. variable and instructions are given as arguments.
 LEN: length of instructions (to be provided by user as well since zokretes does not allow array length from argument to be used as loop upper-bound)
 
@@ -24,19 +24,19 @@ stack[0] = 2 means the first INS takes 2 variables for its operation (as in this
 main function calls run()
 
 
-run() - setres():
+### run() - setres():
 All these functions, unlike main() are fixed and we can create a library/ module using these (user can import it and use it with the main function defined by him)
 
-run():
+#### run():
 calls the operator() function
 
-operator():
+#### operator():
 this is the most important function where all the operations will take place.
 Since zokrates does not allow string argument, instructions are passed using u64 values
 in this code, 0x0000000000000001 is used for EQUAL and 0x0000000000000002 is used for ADD
 this function uses a RES array (which is initially same as the VAR array) to store operation results
 
-setres():
+#### setres():
 This function is used to make left shift on RES array.
 For example, if initially we have 
 RES = VAR = [1,2,3,4]
@@ -45,7 +45,7 @@ RES = [(1+2),3,4,4]
 So basically, we store the result of ADD operation of the first 2 varaibles into the RES[0] and the use left shift to the next elements.
 
 
-Flow of the result using an example:
+### Flow of the result using an example:
 say VAR = [1,2,3,6] INS = [2,2,1]
 RES = VAR = [1,2,3,6]
 iterate#1: INS[0] -> 2: ADD :- RES = [3,3,6,6]
