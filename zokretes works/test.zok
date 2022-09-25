@@ -1,3 +1,5 @@
+//library
+
 def setres<n>(field[n] mut var, field[n] mut res, field resval, u32 start) -> field[n]{
 
     var = res;
@@ -47,17 +49,17 @@ def run<n,m,o>(field[n] VAR, u64[o] INS, u32 LEN, u32[m] stack) -> field[n]{
 
     return RES;
 }
-
+//library
 
 
 //main function
 
-def main(field[5] VAR, u64[4] INS) -> field[5]{
+def main(field[4] VAR, u64[3] INS) -> field[4]{
 
-    u32 LEN = 4;
-    u32[4] stack = [2,2,2,2];
+    u32 LEN = 3;
+    u32[3] stack = [2,2,1];
 
-    field[5] RESULT = run(VAR, INS, LEN, stack);
+    field[4] RESULT = run(VAR, INS, LEN, stack);
 
     assert(RESULT[0] == 0);
 
