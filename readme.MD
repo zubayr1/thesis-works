@@ -1,11 +1,11 @@
-Problem statement (specific):
+#### Problem statement (specific):
 
 Given 3 values s1, s2, s3 and 2 instructions i1 (add) and i2(equal)
     check if [s1 i1 s2 i2 s3] (in other words, s1 + s2 == s3)
 
 
 
-Problem statement (generic): (also possible with the given code)
+#### Problem statement (generic): (also possible with the given code)
 
 Given N values s1, s2, s3, ... , sN and (N-1) instructions i1-iN-1 (add) and iN(equal)
     check if [s1 i1 s2 i2 s3 ... iN-1 sN] (in other words, s1 + s2 + ... + sN-1 == sN)
