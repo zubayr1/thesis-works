@@ -14,6 +14,18 @@ def setres<n>(field[n] mut var, field[n] mut res, field resval, u32 start) -> fi
     return res;
 }
 
+def add<n>(field[n] mut res, u32 limit) -> field{
+    field mut sum=0;
+
+    for u32 i in 0..limit{
+        sum = sum + res[i];
+    }
+
+    return sum;
+
+}
+
+
 def operator<n>(field[n] var, field[n] mut res, u64 INS, u32 start) -> field[n]{
 
     field mut resval = 0;
@@ -24,7 +36,7 @@ def operator<n>(field[n] var, field[n] mut res, u64 INS, u32 start) -> field[n]{
         
         if (INS == 0x0000000000000002) { //ADD
 
-            res[0] + res[1]
+            add(res, start)
             
 
 
@@ -54,14 +66,14 @@ def run<n,m,o>(field[n] VAR, u64[o] INS, u32 LEN, u32[m] stack) -> field[n]{
 
 //main function
 
-def main(field[4] VAR, u64[3] INS) -> field[4]{
+def main(field[4] VAR, u64[2] INS) -> field[4]{
 
-    u32 LEN = 3;
-    u32[3] stack = [2,2,1];
+    u32 LEN = 2;
+    u32[2] stack = [3,1];
 
     field[4] RESULT = run(VAR, INS, LEN, stack);
 
-    assert(RESULT[0] == 0);
+    // assert(RESULT[0] == 0);
 
     return RESULT;
 
