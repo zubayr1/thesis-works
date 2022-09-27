@@ -82,3 +82,11 @@ Finally in main() we check the RES[0] if its equal to 0:
 assert(RESULT[0] == 0);
 
 If so, we can conclude that our assertion (in this particular porblem sum of first N-1 variables is equal to the last element)
+
+
+### Instructions:
+1: Equal: stack: 2
+
+2. Add: stack: any
+
+3. Dup: stack: 1
