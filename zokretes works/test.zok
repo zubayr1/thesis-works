@@ -41,7 +41,16 @@ def operator<n>(field[n] var, field[n] mut res, u64 INS, u32 start) -> field[n]{
 
 
         } else {
-            -1
+            if (INS == 0x0000000000000003) { //DUP
+
+                res[start-1]
+            
+
+
+            } else {
+                -1
+            }
+            
         }
     };
 
@@ -66,10 +75,10 @@ def run<n,m,o>(field[n] VAR, u64[o] INS, u32 LEN, u32[m] stack) -> field[n]{
 
 //main function
 
-def main(field[4] VAR, u64[2] INS) -> field[4]{
+def main(field[4] VAR, u64[3] INS) -> field[4]{
 
-    u32 LEN = 2;
-    u32[2] stack = [3,1];
+    u32 LEN = 3;
+    u32[3] stack = [2,1,2];
 
     field[4] RESULT = run(VAR, INS, LEN, stack);
 
