@@ -1,0 +1,79 @@
+
+//library
+
+def setres<n>(field[n] mut var, field[n] mut res, field resval) -> field[n]{
+
+    var = res;
+    res[0] = resval;
+    u32 mut i=1;
+
+    for u32 mut j in 2..n {
+        res[i] =  var[j];
+        i=i+1;
+    }
+
+    return res;
+}
+
+def operator<n>(field[n] var, field[n] mut res, u64 INS) -> field[n]{
+
+    field mut resval = 0;
+
+    resval = if (INS == 0x0000000000000001 && res[0]==res[1]) { //EQUAL
+        0 
+    } else {
+        
+        if (INS == 0x0000000000000002) { //ADD
+
+            res[0] + res[1]
+            
+
+
+        } else {
+            if (INS == 0x0000000000000003) { //DUP
+
+                res[0]
+            
+
+
+            } else {
+                -1
+            }
+            
+        }
+    };
+
+    res = setres(var, res, resval);
+
+    return res;
+}
+
+def run<n,o>(field[n] VAR, u64[o] INS, u32 LEN) -> field[n]{
+    
+    
+    field[n] mut RES=VAR;
+
+    for u32 i in 0..LEN{
+        RES = operator(VAR, RES, INS[i]);
+    }
+
+    return RES;
+}
+//library
+
+
+//main function
+
+def main(field[4] mut VAR, u64[3] mut INS, u32 VARLEN) -> field[4]{
+
+    field[VARLEN] VAR = VAR[0..VARLEN];
+
+    //INS = INS[0..INSLEN];
+
+    field[4] RESULT = run(VAR, INS, 3);
+
+    // assert(RESULT[0] == 0);
+
+    return RESULT;
+
+}
