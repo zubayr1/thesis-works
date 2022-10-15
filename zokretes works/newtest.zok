@@ -54,7 +54,11 @@ def run<n,o>(field[n] VAR, u64[o] INS, u32 LEN) -> field[n]{
     field[n] mut RES=VAR;
 
     for u32 i in 0..LEN{
-        RES = operator(VAR, RES, INS[i]);
+        RES = if (INS[i]!=0) {
+            operator(VAR, RES, INS[i])
+        } else {
+            RES
+        };
     }
 
     return RES;
@@ -64,13 +68,11 @@ def run<n,o>(field[n] VAR, u64[o] INS, u32 LEN) -> field[n]{
 
 //main function
 
-def main(field[4] mut VAR, u64[3] mut INS, u32 VARLEN) -> field[4]{
+def main(field[6] mut VAR, u64[6] mut INS) -> field[6]{
 
-    field[VARLEN] VAR = VAR[0..VARLEN];
+    
 
-    //INS = INS[0..INSLEN];
-
-    field[4] RESULT = run(VAR, INS, 3);
+    field[6] RESULT = run(VAR, INS, 6);
 
     // assert(RESULT[0] == 0);
 
