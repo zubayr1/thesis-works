@@ -66,14 +66,14 @@ def run<n,o>(field[n] VAR, field[o] INS, u32 LEN) -> field[n]{
 }
 
 
-def hashing<n>(field[n] array) -> field[2]{
+def hashing<n>(field[n] array, field salt) -> field[2]{
 
     field mut SUM=0;
 
     for u32 i in 0..n {
         SUM= SUM+array[i];
     }
-    field[2] HASH = sha256packed([SUM, SUM, SUM, SUM]);
+    field[2] HASH = sha256packed([SUM, SUM, salt, salt]);
 
     return HASH;
 }
@@ -81,7 +81,7 @@ def hashing<n>(field[n] array) -> field[2]{
 
 //main function
 
-def main(private field[6] mut VAR, private field[6] mut INS, field[2] VARhash, field[2] INShash) -> field[6]{
+def main(private field[6] mut VAR, private field[6] mut INS, private field VARsalt, private field INSsalt, field[2] VARhash, field[2] INShash) -> field[6]{
 
     
 
@@ -89,7 +89,7 @@ def main(private field[6] mut VAR, private field[6] mut INS, field[2] VARhash, f
 
     // assert(RESULT[0] == 0);
 
-    // assert( hashing(VAR)==VARhash);
+    // assert( hashing(VAR, VARsalt)==VARhash);
 
     // assert( hashing(INS)==INShash);
 
