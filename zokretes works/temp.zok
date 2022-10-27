@@ -1,0 +1,111 @@
+import "hashes/sha256/512bitPacked" as sha256packed;
+
+
+def run<n,o>(field[n] VAR, field[o] INS, u32 LEN) -> field[n]{
+    
+    
+    field[n] mut RES=VAR;
+
+    // for u32 i in 0..LEN{
+    //     RES = if (INS[i]!=0) {
+    //         operator(VAR, RES, INS[i])
+    //     } else {
+    //         RES
+    //     };
+    // }
+
+    return RES;
+}
+
+def hashing<n>(field[n] array, field salt) -> field[2]{
+
+    field mut SUM=0;
+
+    for u32 i in 0..n {
+        SUM= SUM+array[i];
+    }
+    field[2] HASH = sha256packed([SUM, SUM, salt, salt]);
+
+    return HASH;
+}
+
+
+
+
+
+def mergeScrpitsFun<n,m>(field[n] LS, field[n] US, field[m] mut MERGED) -> field[m] {
+
+    u32 LEN = n;
+    
+    
+
+    for u32 i in 0..n {
+        MERGED[i] = LS[i];
+
+    }
+
+    for u32 i in 0..n {
+        MERGED[LEN+i] = US[i];
+
+    }
+
+    return MERGED;
+
+}
+
+
+def reArrangeFun<n,m>(field[n] VAR, field[n] INS, u32[m] varformat, u32[m] insformat, field[m] mut reArranged) -> field[m] {
+
+    u32 mut check=0;
+
+    
+
+    field[m] appendArray = mergeScrpitsFun(VAR, INS, reArranged);
+
+    for u32 i in 0..m {
+
+        reArranged[i] = if(varformat[i]!=0) {
+            
+        }
+
+        
+    }
+
+    for u32 i in 0..n {
+
+        reArranged[i] = INS[insformat[i]];
+
+        
+    }
+
+    return reArranged;
+
+}
+
+
+
+def main(private field[3] mut VAR, private field[3] mut INS, private u32[6] varformat, private u32[6] insformat, private field[3] LS, private field[3] US, private field VARsalt, private field INSsalt, field[2] VARhash, field[2] INShash) -> field[6]{
+
+    field[6] mut TEMPARRAY = [0,0,0,0,0,0];
+
+    field[6] mergeScrpits = mergeScrpitsFun(LS, US, TEMPARRAY);
+
+    
+    
+
+    field[6] reArranged = reArrangeFun(VAR, INS, varformat, insformat, TEMPARRAY);
+
+
+    //field[6] RESULT = run(VAR, INS, 6);
+
+    // assert(RESULT[0] == 0);
+
+    // assert( hashing(VAR, VARsalt)==VARhash);
+
+    // assert( hashing(INS)==INShash);
+
+    
+
+    return reArranged;
+
+}
