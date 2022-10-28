@@ -38,3 +38,19 @@ def checkformat(VAR, INS, varformat):
         check=0
         
     return check
+
+def main(VAR, INS, LS, US, varformat, LSSALT, USSALT, LSCOMM, USCOMM):
+    assert checkformat(VAR, INS, varformat)
+    
+    
+    mergedScripts = mergeScrpitsFun(LS, US)
+    reArranged = reArrangeFun(VAR, INS, varformat)
+    
+    assert mergedScripts==reArranged ##check Arrange(VAR || INS) == LS||US ##
+    
+    assert (checkHash(LS, LSCOMM, LSSALT))
+    assert (checkHash(US, USCOMM, USSALT))
+    
+    return 
+
+main( [1,2,4],  [3,5], [1,2],  [3,4,5], [1,1,0,1,0], "0", "22", "120", "34522")
