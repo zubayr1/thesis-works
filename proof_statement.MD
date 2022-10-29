@@ -16,11 +16,11 @@ a set of variables VAR, a set of instructions INS, the varformat, the scripts LS
 
 ### such that
 
-1. varformat has values all 0 or 1
+1. varformat has all values either 0 or 1
 
-2. number(1's) in varformat == len(VAR)
+2. numberof(1's) in varformat == len(VAR)
 
-3. num(0's) in varformat == len(INS)
+3. numberof(0's) in varformat == len(INS)
 
 4. Arrange((VAR || INS), varformat) == LS||US 
 
