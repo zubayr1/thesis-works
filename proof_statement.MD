@@ -9,15 +9,22 @@ var_format is a binary array comprised with 0s and 1s where 1 in ith position si
 
 
 ### Given public values
-var_com & ins_com
+LSCOMM, USCOMM
 
 ### I know 
-a set of variables VAR, a set of instructions INS and salts VARsalt, INSsalt
+a set of variables VAR, a set of instructions INS, the varformat, the scripts LS & US, salts LSSALT, USSALT
 
 ### such that
 
-1. var_com = COMM(VAR || VARsalt)
+1. varformat has values all 0 or 1
 
-2. ins_com = COMM(INS || INSsalt)
+2. number(1's) in varformat == len(VAR)
 
-3. RUN(VAR, INS) will return an array RESULT s.t. RESULT[0] = 0
+3. num(0's) in varformat == len(INS)
+
+4. Arrange((VAR || INS), varformat) == LS||US 
+
+5. LSCOMM = COMM(LS, LSSALT)
+
+6. USCOMM = COMM(US, USSALT)
+
