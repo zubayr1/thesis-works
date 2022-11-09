@@ -53,4 +53,4 @@ def main(VAR, INS, LS, US, varformat, LSSALT, USSALT, LSCOMM, USCOMM):
     
     return 
 
-main( [1,2,4],  [3,5], [1,2],  [3,4,5], [1,1,0,1,0], "0", "22", "120", "34522")
+main( VAR=[1,'2',4],  INS=[3,5], LS=[1,'2'],  US=[3,4,5], varformat=[1,1,0,1,0], LSSALT="0", USSALT="22", LSCOMM="120", USCOMM="34522")
