@@ -1,3 +1,19 @@
+def run(VAR, INS):
+    RESULT = []
+    
+    for i in INS:
+        if i==2: ##ADD##
+            addres = VAR[0]+VAR[1]
+            RESULT.append(addres)            
+            VAR.pop(0)
+            VAR.pop(1)
+            VAR.insert(0, addres)
+            
+        elif i==1: ##EQUAL##
+            RESULT.append(VAR[0]==VAR[1])
+            
+    return RESULT
+
 def checkHash(arr, hashValue, SALT):
     string = ""
     for i in arr:
@@ -39,7 +55,7 @@ def checkformat(VAR, INS, varformat):
         
     return check
 
-def main(VAR, INS, LS, US, varformat, LSSALT, USSALT, LSCOMM, USCOMM):
+def main(VAR, INS, LS, US, varformat, LSSALT, USSALT, LSCOMM, USCOMM, RESULTCHECK):
     assert checkformat(VAR, INS, varformat)
     
     
@@ -51,6 +67,11 @@ def main(VAR, INS, LS, US, varformat, LSSALT, USSALT, LSCOMM, USCOMM):
     assert (checkHash(LS, LSCOMM, LSSALT))
     assert (checkHash(US, USCOMM, USSALT))
     
+    RESULT = run(VAR, INS)
+    
+    assert(RESULTCHECK == RESULT)
+    
+        
     return 
 
-main( VAR=[1,'2',4],  INS=[3,5], LS=[1,'2'],  US=[3,4,5], varformat=[1,1,0,1,0], LSSALT="0", USSALT="22", LSCOMM="120", USCOMM="34522")
+main( [1,2,4],  [2,1], [1,2],  [2,4,1], [1,1,0,1,0], "0", "22", "120", "24122", [3, False])
