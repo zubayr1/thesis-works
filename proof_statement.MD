@@ -9,9 +9,13 @@ var_format is a binary array comprised with 0s and 1s where 1 in ith position si
 
 The prover also needs to provide a PROVERINPUT list.
 
-When running the variable list VAR and instruction list INS, 
-for each instruction ins from INS, a specific operation (ADD, EQUAL, DUP etc) will be performed with one or more varaible from the VAR list
-and the corresponding result will be appended in a RESULT list.
+Let's assume a run() function which takes VAR list and INS list such that:
+
+run(VAR, INS):
+for each instruction in INS, it will perform a certain operation (ADD, EQUAL, DUP etc) on one or multiple number of variables from VAR list (taking from 0th element in the VAR list)
+and will append the output to the end of a RESULT list.
+At the end the function will return the RESULT list.
+
 
 In order for the prover to prove the statement completely, RESULT must be equal to PROVERINPUT
 
