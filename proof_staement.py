@@ -59,7 +59,7 @@ def checkformat(VAR, INS, varformat):
         
     return check
 
-def main(VAR, INS, LS, US, varformat, LSSALT, USSALT, LSCOMM, USCOMM, RESULTCHECK):
+def main(VAR, INS, LS, US, varformat, LSSALT, USSALT, LSCOMM, USCOMM, PROVERINPUT):
     assert checkformat(VAR, INS, varformat)
     
     
@@ -73,7 +73,7 @@ def main(VAR, INS, LS, US, varformat, LSSALT, USSALT, LSCOMM, USCOMM, RESULTCHEC
     
     RESULT = run(VAR, INS)
     
-    assert(RESULTCHECK == RESULT)
+    assert(PROVERINPUT == RESULT)
     
         
     return 
