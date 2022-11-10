@@ -42,3 +42,5 @@ a set of variables VAR, a set of instructions INS, the varformat, the scripts LS
 
 7. PROVERINPUT = run(VAR, INS)
 
+8. True = PROVERINPUT[len(PROVERINPUT)-1]
+
