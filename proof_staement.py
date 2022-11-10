@@ -12,6 +12,10 @@ def run(VAR, INS):
         elif i==1: ##EQUAL##
             RESULT.append(VAR[0]==VAR[1])
             
+        elif i==3: ##DUP##
+            RESULT.append(VAR[0])
+
+            
     return RESULT
 
 def checkHash(arr, hashValue, SALT):
@@ -74,4 +78,4 @@ def main(VAR, INS, LS, US, varformat, LSSALT, USSALT, LSCOMM, USCOMM, RESULTCHEC
         
     return 
 
-main( [1,2,4],  [2,1], [1,2],  [2,4,1], [1,1,0,1,0], "0", "22", "120", "24122", [3, False])
+main([1,2,3], [2,3,1], [1,2], [2,3,3,1], [1,1,0,1,0,0], "0", "22", "120", "233122", [3, 3, False])
