@@ -2,16 +2,16 @@ Prover has to provide a list of variables (VAR) and a list of instructions (INS)
 
 Each element in the lists should be from the concatinated list created by appending locking script (LS) and unlocking script (US) together.
 
-In order to make sure rearranging the VAR and INS into a script format will give the result as (LS || US), prover must also provide a var_format list.
+In order to make sure rearranging the VAR and INS into a script format will give the result as (LS || US), prover must also provide a varformat list.
 
-var_format is a binary array comprised with 0s and 1s where 1 in ith position signifies that a variable should be in the ith format in the rearranged list made from VAR and INS.
+varformat is a binary array comprised with 0s and 1s where 1 in ith position signifies that a variable should be in the ith format in the rearranged list made from VAR and INS.
 
 
 The prover also needs to provide a PROVERINPUT list.
 
 Let's assume a run() function which takes VAR list and INS list such that:
 
-run(VAR, INS):
+#### run(VAR, INS):
 for each instruction in INS, it will perform a certain operation (ADD, EQUAL, DUP etc) on one or multiple number of variables from VAR list (taking from 0th element in the VAR list)
 and will append the output to the end of a RESULT list.
 At the end the function will return the RESULT list.
