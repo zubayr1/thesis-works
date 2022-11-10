@@ -12,9 +12,9 @@ The prover also needs to provide a PROVERINPUT list.
 Let's assume a run() function which takes VAR list and INS list such that:
 
 #### run(VAR, INS):
-for each instruction in INS, it will perform a certain operation (ADD, EQUAL, DUP etc) on one or multiple number of variables from VAR list (taking from 0th element in the VAR list)
+for each instruction in INS, it will perform a certain operation (ADD, EQUAL, DUP etc) on one or multiple number of variables from VAR list (taking from 0th element in the VAR list) and the used eleemnt from VAR will be poped. 
 and will append the output to the end of a RESULT list.
-At the end the function will return the RESULT list.
+At the end the function will return the RESULT list and the updated VAR list VAR_UPDATED.
 
 
 In order for the prover to prove the statement completely, RESULT must be equal to PROVERINPUT
@@ -30,11 +30,11 @@ a set of variables VAR, a set of instructions INS, the varformat, the scripts LS
 
 1. varformat has all values either 0 or 1
 
-2. numberof(1's) in varformat == len(VAR)
+2. len(VAR) = numberof(1's) in varformat
 
-3. numberof(0's) in varformat == len(INS)
+3. len(INS) = numberof(0's) in varformat
 
-4. Arrange((VAR || INS), varformat) == LS||US 
+4. LS||US = Arrange((VAR || INS), varformat)
 
 5. LSCOMM = COMM(LS, LSSALT)
 
@@ -43,4 +43,6 @@ a set of variables VAR, a set of instructions INS, the varformat, the scripts LS
 7. PROVERINPUT = run(VAR, INS)
 
 8. True = PROVERINPUT[len(PROVERINPUT)-1]
+
+9. 0 = len(VAR_UPDATED)
 

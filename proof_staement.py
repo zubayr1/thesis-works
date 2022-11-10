@@ -11,11 +11,12 @@ def run(VAR, INS):
             
         elif i==1: ##EQUAL##
             RESULT.append(VAR[0]==VAR[1])
+            VAR.pop(0)
+            VAR.pop(0)
             
         elif i==3: ##DUP##
             RESULT.append(VAR[0])
-
-    return RESULT
+    return RESULT, VAR
 
 def checkHash(arr, hashValue, SALT):
     string = ""
@@ -70,9 +71,13 @@ def main(VAR, INS, LS, US, varformat, LSSALT, USSALT, LSCOMM, USCOMM, PROVERINPU
     assert (checkHash(LS, LSCOMM, LSSALT))
     assert (checkHash(US, USCOMM, USSALT))
     
-    RESULT = run(VAR, INS)
+    RESULT, VAR_UPDATED = run(VAR, INS)
     
     assert(PROVERINPUT == RESULT)
+    
+    assert(True == PROVERINPUT[len(PROVERINPUT)-1])
+    
+    assert(len(VAR_UPDATED)==0)
     
         
     return 
