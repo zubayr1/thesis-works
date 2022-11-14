@@ -2,19 +2,19 @@ def run(VAR, INS):
     RESULT = []
     
     for i in INS:
-        if i==2: ##ADD##
+        if i=="ADD": ##ADD##
             addres = VAR[0]+VAR[1]
             RESULT.append(addres)            
             VAR.pop(0)
             VAR.pop(0)
             VAR.insert(0, addres)
             
-        elif i==1: ##EQUAL##
+        elif i=="EQUAL": ##EQUAL##
             RESULT.append(VAR[0]==VAR[1])
             VAR.pop(0)
             VAR.pop(0)
             
-        elif i==3: ##DUP##
+        elif i=="DUP": ##DUP##
             RESULT.append(VAR[0])
     return RESULT, VAR
 
@@ -82,4 +82,4 @@ def main(VAR, INS, LS, US, varformat, LSSALT, USSALT, LSCOMM, USCOMM, PROVERINPU
         
     return 
 
-main([1,2,3], [2,3,1], [1,2], [2,3,3,1], [1,1,0,1,0,0], "0", "22", "120", "233122", [3, 3, True])
+main([1,2,3], ["ADD","DUP","EQUAL"], [1,2], ["ADD",3,"DUP","EQUAL"], [1,1,0,1,0,0], "0", "22", "120", "ADD3DUPEQUAL22", [3, 3, True])

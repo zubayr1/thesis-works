@@ -12,7 +12,7 @@ The prover also needs to provide a PROVERINPUT list.
 Let's assume a run() function which takes VAR list and INS list as argument such that:
 
 #### run(VAR, INS):
-for each instruction in INS, it will perform a certain operation (ADD, EQUAL, DUP etc) on one or multiple number of variables from VAR list (taking from 0th element in the VAR list) and the used element from VAR will be popped. 
+for each instruction in INS list, it will perform the corresponding operation (ADD, EQUAL, DUP etc) on one or multiple number of variables from VAR list (taking from 0th element in the VAR list) and the used element from VAR will be popped. 
 and will append the output to the end of a RESULT list.
 At the end the function will return the RESULT list and the updated VAR list VAR_UPDATED.
 
