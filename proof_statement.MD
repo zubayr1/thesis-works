@@ -40,7 +40,7 @@ a set of variables VAR, a set of instructions INS, the varformat, the scripts LS
 
 6. USCOMM = COMM(US, USSALT)
 
-7. PROVERINPUT = run(VAR, INS)
+7. run(VAR, INS) will return the RESULT such that RESULT = PROVERINPUT
 
 8. True = PROVERINPUT[len(PROVERINPUT)-1]
 
