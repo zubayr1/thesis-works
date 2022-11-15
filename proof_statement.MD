@@ -19,6 +19,8 @@ At the end the function will return the RESULT list and the updated VAR list VAR
 
 In order for the prover to prove the statement completely, RESULT must be equal to PROVERINPUT
 
+In order to make sure all the variables from the VAR list is used in the run operation the VAR_UPDATED should be an empty list.
+
 
 ### Given public values
 LSCOMM, USCOMM
